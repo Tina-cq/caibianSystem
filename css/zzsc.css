@@ -1,0 +1,34 @@
+
+#xzw_starSys{width:135px; float:right; margin:7px 40px 0 0}
+#xzw_starBox{position:relative;width:135px;float:left}
+/**/
+#xzw_starSys .description{clear:both;padding:10px 0px}
+#xzw_starSys .star{height:15px;width:135px;position:relative;background:url(../images/123.png) repeat-x;cursor:pointer}
+#xzw_starSys .star li{float:left;padding:0px;margin:0px}
+#xzw_starSys .star li a{display:block;width:15px;height:15px;overflow:hidden;text-indent:-9999px;position:absolute;z-index:9}
+#xzw_starSys .star li a:hover{background:url(../images/123.png) 0 -15px repeat-x;z-index:3;left:0}
+#xzw_starSys .star a.one-star{left:0}
+#xzw_starSys .star a.one-star:hover{width:15px}
+#xzw_starSys .star a.two-stars{left:15px}
+#xzw_starSys .star a.two-stars:hover{width:30px}
+#xzw_starSys .star a.three-stars{left:30px}
+#xzw_starSys .star a.three-stars:hover{width:45px}
+#xzw_starSys .star a.four-stars{left:45px}
+#xzw_starSys .star a.four-stars:hover{width:60px}
+#xzw_starSys .star a.five-stars{left:60px}
+#xzw_starSys .star a.five-stars:hover{width:75px}
+#xzw_starSys .star a.Six-stars{left:75px}
+#xzw_starSys .star a.Six-stars:hover{width:90px}
+
+#xzw_starSys .star a.seven-stars{left:90px}
+#xzw_starSys .star a.seven-stars:hover{width:105px}
+
+#xzw_starSys .star a.eight-stars{left:105px}
+#xzw_starSys .star a.eight-stars:hover{width:120px}
+
+#xzw_starSys .star a.nine-stars{left:120px}
+#xzw_starSys .star a.nine-stars:hover{width:135px}
+
+
+
+#xzw_starSys .current-rating{background:url(../images/123.png) 0 -15px repeat-x;position:absolute;height:15px;z-index:1;top:0;left:0}

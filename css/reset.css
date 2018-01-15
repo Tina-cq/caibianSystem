@@ -1,0 +1,40 @@
+/* reset */
+body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,code,form,fieldset,legend,textarea,p,blockquote,th,td,input,select,textarea,button {margin:0;padding:0}  /* ��ʼ����ǩ������������е�margin��paddingֵ */
+fieldset,img {border:0 none}  /* ����fieldset�������飩��ͼƬ�ı߿�Ϊ0*/
+h1,h2,h3,h4,h5,h6{font-weight: normal;}
+dl,ul,ol,menu,li {list-style:none}   /* �������ǰ������Ϊonne,menu��HTML5����Ч */
+blockquote, q {quotes: none}   /* ����Ƕ�����õ��������� */
+blockquote:before, blockquote:after,q:before, q:after {content:'';content:none}  /* ����Ƕ������*/
+input,select,textarea,button {vertical-align:middle;outline: none;border: 0;border: none}  /* ���ñ��ؼ���ֱ����*/
+button {border:0 none;background-color:transparent;cursor:pointer}  /* ���ñ�button��ťЧ�� */
+body {background:#e9e9eb;letter-spacing: 0.5px;}   /* ����body ҳ�汳��Ϊ��ɫ */
+body,th,td,input,select,textarea,button {font-size:14px;line-height:1 ;font-family:"microsoft yahei";color:#939393} /* ����ҳ���������� */
+a {color:#666;text-decoration:none}  /* ��������a��ǩ */
+a:active, a:hover {text-decoration:none}   /* ��������a��ǩ����껬��Ч�� */
+address,caption,cite,code,dfn,em,var {font-style:normal;font-weight:normal}  /* ������ʽ��ǩ����ʽ */
+caption {display:none;}    /* ���ñ�����Ϊ���� */
+table {width:100%;border-collapse:collapse;border-spacing:0;table-layout:fixed;}    /* ����table���� */
+img{vertical-align:top}  /* ͼƬ�ڵ�ǰ���ڵĴ�ֱλ�� */
+i, cite, em,var, address { font-style: normal;}
+/* ҳ������ */
+/* ȡ��a��ǩ���������߿� */
+a {outline: none;}
+a:active {star:expression(this.onFocus=this.blur());}
+/* �帡�� */
+.clearfix:after {
+    content: '';
+    display: block;
+    height: 0;
+    line-height: 0;
+    visibility: hidden;
+    clear: both;
+}
+.clearfix{
+    zoom:1;
+}
+
+
+
+
+
+

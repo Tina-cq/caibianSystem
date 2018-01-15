@@ -1,0 +1,1210 @@
+<!DOCTYPE html>
+<html>
+  <head lang="en">
+  <meta charset="UTF-8">
+  <title></title>
+  <link type="text/css" href="css/zzsc.css" rel="stylesheet" />
+  <link rel="stylesheet" href="css/reset.css"/>
+  <link rel="stylesheet" href="css/index.css"/>
+  <link rel="stylesheet" href="css/jquery.tagbox.css" />
+  <style>
+form {
+	margin: 0;
+}
+h3 {
+	text-align: center;
+}
+textarea {
+	display: block;
+}
+form .ke-container {
+	margin: 0 auto;
+}
+</style>
+
+
+
+
+
+
+<script type="text/javascript" src="js/jquery.js"></script>
+<script type="text/javascript" src="js/zzsc.js"></script>
+
+  <link href="themes/default/default.css" rel="stylesheet" />
+
+  <script src="js/kindeditor-min.js"></script>
+  <script src="js/emoticons.js"></script>
+  <script src="js/zh_CN.js"></script>
+
+  <script>
+		var editor;
+		KindEditor.ready(function(K) {
+			editor = K.create('textarea[name="content"]', {
+				resizeType : 1,
+				allowPreviewEmoticons : false,
+				allowImageUpload : false,
+				items : [
+					'fontname', 'fontsize', '|', 'forecolor', 'hilitecolor', 'bold', 'italic', 'underline',
+					'removeformat', '|', 'justifyleft', 'justifycenter', 'justifyright', 'insertorderedlist',
+					'insertunorderedlist', '|', 'emoticons', 'image', 'link']
+			});
+		});
+</script>
+  <!--<script src="js/jquery.min.js"></script>-->
+  <script src="js/tools.js"></script>
+  </head>
+  <style type="text/css">
+/*---------------------------------------demo css--------------------------------------------*/
+
+
+.date_selector, .date_selector * {
+	width: auto;
+	height: auto;
+	border: none;
+	background: none;
+	margin: 0;
+	padding: 0;
+	text-align: left;
+	text-decoration: none;
+}
+.date_selector {
+	background: #fbfbfb;
+	border: 1px solid #ccc;
+	padding: 10px;
+	margin: 0;
+	margin-top: -1px;
+	position: absolute;
+	z-index: 100000;
+	display: none;
+	border-radius: 3px;
+	box-shadow: 0 0 5px #aaa;
+	box-shadow: 0 2px 2px #ccc;
+	width: 220px;
+}
+.date_selector_ieframe {
+	position: absolute;
+	z-index: 99999;
+	display: none;
+}
+.date_selector .nav {
+	width: 210px;
+	font: 12px/1.5 Arial;
+}
+.date_selector .nav p {
+	clear: none;
+}
+.date_selector .month_nav, .date_selector .year_nav {
+	margin: 0 0 3px 0;
+	padding: 0;
+	display: block;
+	position: relative;
+	text-align: center;
+}
+.date_selector .month_nav {
+	float: left;
+	width: 55%;
+}
+.date_selector .year_nav {
+	float: right;
+	width: 42%;
+	margin-right: -8px;
+}
+.date_selector .month_name, .date_selector .year_name {
+	font-weight: bold;
+	line-height: 20px;
+	float: none;
+	padding-right: 0;
+}
+.date_selector .button {
+	display: block;
+	position: absolute;
+	top: 0;
+	width: 18px;
+	height: 18px;
+	line-height: 16px;
+	font-weight: bold;
+	color: #2685e1;
+	text-align: center;
+	font-size: 12px;
+	overflow: hidden;
+	border: 1px solid #ccc;
+	border-radius: 2px;
+}
+.date_selector .button:hover, .date_selector .button.hover {
+	background: #2685e1;
+	color: #fff;
+	cursor: pointer;
+	border-color: #3a930d;
+}
+.date_selector .prev {
+	left: 0;
+	padding-right: 0;
+}
+.date_selector .next {
+	right: 0;
+	padding-right: 0;
+}
+.date_selector table {
+	border-spacing: 0;
+	border-collapse: collapse;
+	clear: both;
+	margin: 0;
+	width: 220px;
+}
+.date_selector tbody td {
+	font: 12px/1.5 Arial;
+}
+.date_selector th, .date_selector td {
+	width: 2.5em;
+	height: 2em;
+	padding: 0 !important;
+	text-align: center !important;
+	color: #666;
+	font-weight: normal;
+}
+.date_selector th {
+	font-size: 12px;
+}
+.date_selector td {
+	border: 1px solid #f1f1f1;
+	line-height: 2em;
+	text-align: center;
+	white-space: nowrap;
+	color: #2685e1;
+	background: #fff;
+}
+.date_selector td.today {
+	background: #eee;
+}
+.date_selector td.unselected_month {
+	color: #ccc;
+}
+.date_selector td.selectable_day {
+	cursor: pointer;
+}
+.date_selector td.selected {
+	background: #2685e1;
+	color: #fff;
+	font-weight: bold;
+}
+.date_selector td.selectable_day:hover, .date_selector td.selectable_day.hover {
+	background: #2685e1;
+	color: #fff;
+}
+
+    /*-----------------------------------------------------------------------------------*/
+</style>
+  <body id="body">
+<div class="header">
+    <div class="inner">新增资讯</div>
+  </div>
+<div class="inner wrap">
+    <div class="content clearfix" id="content"> 
+    <!--点击预览弹出框-->
+    <div class="preview" id="preview">
+        <div class="close-btn" id="close-btn"></div>
+        <div class="preview_inner">
+        <h2>社科院报告：北京房价环比首降 西城海淀区领跌</h2>
+        <p class="time">2017-06-13 00:54:12　　来源：每日经济新闻　　撰写编者：王鸣</p>
+        <div class="cont">
+            <p>6月12日，中国社科院财经战略研究院、中国社科院城市与竞争力研究中心《中国住房发展报告》项目组发布了2017年5月《住房市场发展月度分析报告》（以下简称《报告》）。上述《报告》是在2017年5月大数据房价指数（BHPI）的基础上结合相关调查而完成，指数样本覆盖了30个主要城市和数十个重点城市的主要城区。根据重复交易指数模型的技术特性，BHPI仅监测存量住房价格变动，新建商品住房价格变动不计入该指数。
+            《报告》显示，在热点地区严厉的政策调控下，2017年5月热点城市房价涨速整体回落。其中，北京房价环比首次出现下降。</p>
+            <p>6月12日，中国社科院财经战略研究院、中国社科院城市与竞争力研究中心《中国住房发展报告》项目组发布了2017年5月《住房市场发展月度分析报告》（以下简称《报告》）。上述《报告》是在2017年5月大数据房价指数（BHPI）的基础上结合相关调查而完成，指数样本覆盖了30个主要城市和数十个重点城市的主要城区。根据重复交易指数模型的技术特性，BHPI仅监测存量住房价格变动，新建商品住房价格变动不计入该指数。
+            《报告》显示，在热点地区严厉的政策调控下，2017年5月热点城市房价涨速整体回落。其中，北京房价环比首次出现下降。</p>
+            <p>6月12日，中国社科院财经战略研究院、中国社科院城市与竞争力研究中心《中国住房发展报告》项目组发布了2017年5月《住房市场发展月度分析报告》（以下简称《报告》）。上述《报告》是在2017年5月大数据房价指数（BHPI）的基础上结合相关调查而完成，指数样本覆盖了30个主要城市和数十个重点城市的主要城区。根据重复交易指数模型的技术特性，BHPI仅监测存量住房价格变动，新建商品住房价格变动不计入该指数。
+            《报告》显示，在热点地区严厉的政策调控下，2017年5月热点城市房价涨速整体回落。其中，北京房价环比首次出现下降。</p>
+          </div>
+      </div>
+      </div>
+    <div class="left" id="left">
+        <div class="left_inner">
+        <div class="title"> <span class="asterisk">*</span>
+            <input id="title" type="text" value="此处输入标题"/>
+            <div class="fabu">
+            <input class="date_picker" type="text" value="发布时间"/>
+          </div>
+          </div>
+        <div class="media clearfix" id="media"> <span class="asterisk">*</span>
+            <h1  class="focus">
+
+            <input type="text" value="媒体出处" style="color:#999;" onfocus="if(value=='媒体出处'){this.style.color='#000';value=''}" onblur="if(value==''){this.style.color='#999';value='媒体出处'}"/>
+          </h1>
+            <div id="after">
+                <input id="guanjianci" type="text" value="关键词" style="color:#999;" onfocus="if(value=='关键词'){this.style.color='#000';value=''}" onblur="if(value==''){this.style.color='#999';value='关键词'}"/>
+                <span id="add"><img src="images/add.png" alt=""/></span>
+            </div>
+            <!--<a>午评 <i class="close">×</i></a>-->
+            <!--<a>午评dsad孝子慈孙 <i class="close">×</i></a>-->
+            <!--<a>午评 <i class="close">×</i></a>-->
+            <i class='ellipsis02'>......</i>
+          </div>
+        <div class="classifyLabel clearfix">
+            <div class="classify tags classify01"> <span class="asterisk">*</span> <a>财经要闻 <i>×</i></a>
+            <div class="click">分类</div>
+          </div>
+            <div class="classify classify03">
+                <span class="asterisk">*</span>
+                <select name="" id="">
+                    <option value="">风险等级</option>
+                    <option value="">等级低等级等</option>
+                    <option value="">等级中等级中</option>
+                    <option value="">等级高等级高</option>
+                </select>
+            </div>
+
+            <div class="classify Label tags classify02"> <span class="asterisk">*</span> <a>一带一路 <i>×</i></a> <a>一带一路 <i>×</i></a> <a>基金 <i>×</i></a> <a>基金 <i>×</i></a> <a>基金 <i>×</i></a>
+            <div class="click">标签</div>
+          </div>
+
+          </div>
+        <div class="digest" > <span class="asterisk asterisk02">*</span>
+            <textarea id="zhaiyao"></textarea>
+          </div>
+        <div class="text_box">
+            <form>
+            <textarea name="content" style="width:100%;min-height:400px;visibility:hidden;"></textarea>
+          </form>
+          </div>
+        <div id="hide">
+            <div class="subtitle clearfix">
+            <div class="subtil">
+                <input type="text" value="副标题" style="color:#999;" onfocus="if(value=='副标题'){this.style.color='#000';value=''}" onblur="if(value==''){this.style.color='#999';value='副标题'}"/>
+              </div>
+            <div class="author">
+                <input type="text" value="作者" style="color:#999;" onfocus="if(value=='作者'){this.style.color='#000';value=''}" onblur="if(value==''){this.style.color='#999';value='作者'}"/>
+              </div>
+          </div>
+            <div class="subtitle clearfix">
+            <div class="subtil">
+                <input type="text" value="请输入链接地址" style="color:#999;" onfocus="if(value=='请输入链接地址'){this.style.color='#000';value=''}" onblur="if(value==''){this.style.color='#999';value='请输入链接地址'}"/>
+              </div>
+
+            <div class="recommend"> 推荐级别
+                <div id="xzw_starSys">
+                    <div id="xzw_starBox">
+                        <ul class="star" id="star">
+                            <li><a href="javascript:void(0)" title="1" class="one-star">1</a></li>
+                            <li><a href="javascript:void(0)" title="2" class="two-stars">2</a></li>
+                            <li><a href="javascript:void(0)" title="3" class="three-stars">3</a></li>
+                            <li><a href="javascript:void(0)" title="4" class="four-stars">4</a></li>
+                            <li><a href="javascript:void(0)" title="5" class="five-stars">5</a></li>
+                            <li><a href="javascript:void(0)" title="6" class="Six-stars">6</a></li>
+                            <li><a href="javascript:void(0)" title="7" class="seven-stars">7</a></li>
+                            <li><a href="javascript:void(0)" title="8" class="eight-stars">8</a></li>
+                            <li><a href="javascript:void(0)" title="9" class="nine-stars">9</a></li>
+                        </ul>
+                        <div class="current-rating" id="showb"></div>
+                    </div>
+                        <!--评价文字-->
+                    <!--<div class="description"></div>-->
+                </div>
+
+            </div>
+
+          </div>
+            <div class="subtitle clearfix">
+            <div class="subtil01 focus">
+
+                    <!--<ul  class="clearfix" id="focus">-->
+                        <!--<li>提示内容</li>-->
+                        <!--<li>提示内容</li>-->
+                        <!--<li>提示内容</li>-->
+                        <!--<li>提示内容</li>-->
+                    <!--</ul>-->
+
+                <input type="text" value="撰写机构" style="color:#999;" onfocus="if(value=='撰写机构'){this.style.color='#000';value=''}" onblur="if(value==''){this.style.color='#999';value='撰写机构'}"/>
+              </div>
+            <div class="subtil01 focus">
+                <input type="text" value="涉及国家" style="color:#999;" onfocus="if(value=='涉及国家'){this.style.color='#000';value=''}" onblur="if(value==''){this.style.color='#999';value='涉及国家'}"/>
+              </div>
+            <div class="subtil01 focus">
+                <input type="text" value="涉及对象" style="color:#999;" onfocus="if(value=='涉及对象'){this.style.color='#000';value=''}" onblur="if(value==''){this.style.color='#999';value='涉及对象'}"/>
+              </div>
+            <div class="subtil01 subtil02 focus">
+                <input type="text" value="交易市场" style="color:#999;" onfocus="if(value=='交易市场'){this.style.color='#000';value=''}" onblur="if(value==''){this.style.color='#999';value='交易市场'}"/>
+              </div>
+          </div>
+            <div class="name nametop clearfix">
+                <div class="name01">
+                    <input type="text" value="请输入证券名称" style="color:#999;" onfocus="if(value=='请输入证券名称'){this.style.color='#939393';value=''}" onblur="if(value==''){this.style.color='#999';value='请输入证券名称'}"/>
+                    <div class="resultlist">
+                        <!--<div class="name01 name02 resultlist01"> 浦发银行（600000） <i class="arrow"><img src="images/icon_05%20.png" alt=""/></i> <span></span></div>-->
+                        <!--<div class="name01 name02 resultlist01"> 浦发银行（600000） <i class="arrow"><img src="images/icon_07.png" alt=""/></i> <span></span> <span></span><span></span></div>-->
+                        <!--<div class="name01 name02 resultlist01"> 浦发银行（600000） <i class="arrow"><img src="images/icon_08.png" alt=""/></i> <span></span> <span></span></div>-->
+                    </div>
+              </div>
+                <div class="item">
+                    <!--<div class="name01 name02"> 浦发银行（600000） <i class="arrow"><img src="images/icon_05%20.png" alt=""/></i> <span></span> <i class="close">×</i> </div>-->
+                    <!--<div class="name01 name02"> 浦发银行（600000） <i class="arrow"><img src="images/icon_05%20.png" alt=""/></i> <span></span> <i class="close">×</i> </div>-->
+                    <!--<div class="name01 name02"> 浦发银行（600000） <i class="arrow"><img src="images/icon_05%20.png" alt=""/></i> <span></span> <i class="close">×</i> </div>-->
+                </div>
+          </div>
+
+            <div class="name clearfix">
+            <div class="name01">
+                <input type="text" value="请输入机构名称" style="color:#999;" onfocus="if(value=='请输入机构名称'){this.style.color='#939393';value=''}" onblur="if(value==''){this.style.color='#999';value='请输入机构名称'}"/>
+                <div class="resultlist">
+                    <!--<div class="name01 name02 resultlist01"> 浦发银行（600000） <i class="arrow"><img src="images/icon_05%20.png" alt=""/></i> <span></span></div>-->
+                    <!--<div class="name01 name02 resultlist01"> 浦发银行（600000） <i class="arrow"><img src="images/icon_07.png" alt=""/></i> <span></span> <span></span><span></span></div>-->
+                    <!--<div class="name01 name02 resultlist01"> 浦发银行（600000） <i class="arrow"><img src="images/icon_08.png" alt=""/></i> <span></span> <span></span></div>-->
+                </div>
+            </div>
+                <div class="item">
+                    <!--<div class="name01 name02"> 浦发银行（600000） <i class="arrow"><img src="images/icon_07.png" alt=""/></i> <span></span> <span></span> <span></span> <i class="close">×</i> </div>-->
+                </div>
+          </div>
+
+            <div class="name clearfix">
+            <div class="name01">
+                <input type="text" value="请输入板块名称" style="color:#999;" onfocus="if(value=='请输入板块名称'){this.style.color='#939393';value=''}" onblur="if(value==''){this.style.color='#999';value='请输入板块名称'}"/>
+                <div class="resultlist">
+                    <!--<div class="name01 name02 resultlist01"> 浦发银行（600000） <i class="arrow"><img src="images/icon_05%20.png" alt=""/></i> <span></span></div>-->
+
+                </div>
+            </div>
+            <div class="item">
+                <!--<div class="name01 name02"> 浦发银行（600000） <i class="arrow"><img src="images/icon_08.png" alt=""/></i> <span></span> <span></span> <i class="close">×</i> </div>-->
+            </div>
+          </div>
+
+            <div class="clearfix">
+                <div class="input input01">
+                    <input type="text" value="请输入指数名称" style="color:#999;" onfocus="if(value=='请输入指数名称'){this.style.color='#939393';value=''}" onblur="if(value==''){this.style.color='#999';value='请输入指数名称'}"/>
+                </div>
+                <div class="input input02">
+                    <input type="text" value="行情指数" style="color:#999;" onfocus="if(value=='行情指数'){this.style.color='#939393';value=''}" onblur="if(value==''){this.style.color='#999';value='行情指数'}"/>
+                </div>
+                <div class="input input03">
+                    <input type="text" value="涨跌幅" style="color:#999;" onfocus="if(value=='涨跌幅'){this.style.color='#939393';value=''}" onblur="if(value==''){this.style.color='#999';value='涨跌幅'}"/>
+                </div>
+            </div>
+
+            <div class="list clearfix">
+            <ul id="zhishu">
+                <!--<li> 沪深300[000300] ,3492.88 , +0.70% <i class="close">×</i> </li>-->
+                <!--<li> 沪深300[000300] ,3492.88 , +0.70% <i class="close">×</i> </li>-->
+                <!--<li> 沪深300[000300] ,3492.88 , +0.70% <i class="close">×</i> </li>-->
+              </ul>
+          </div>
+          </div>
+        <p class="shouqi" id="attr">收起正文</p>
+      </div>
+      </div>
+    <div class="right" id="right">
+        <p class="right_til">上传图片</p>
+        <div class="pic" id="pic"> <img src="images/right_pic.png" alt="">
+        <p>标题</p>
+      </div>
+        <p class="right_til">多媒体</p>
+        <div class="pic pic02">
+        <ul class="multimedia" id="multimedia">
+            <li>
+            <input type="file" class="file"/>
+            音频 <span>
+              <input type="text" class="filename" value="135146546543.mp3"/>
+              </span> </li>
+            <li>
+            <input type="file" class="file"/>
+            附件 <span>
+              <input type="text" class="filename"/>
+              </span> </li>
+            <li>
+            <input type="file" class="file"/>
+            视频 <span>
+              <input type="text" class="filename"/>
+              </span> </li>
+          </ul>
+      </div>
+      </div>
+  </div>
+  </div>
+<div class="button">
+    <div class="inner">
+        <div class="left left01">
+            <div class="show" id="show"><span id="attribute">收起正文</span></div>
+            <div class="submit clearfix">
+                <span id="preview_btn">预览</span> <span>提交</span> <span>关闭</span>
+                <div class="tip">
+                    <ul>
+                        <li class="li">内容1</li>
+                        <li class="li">内容2</li>
+                        <li class="li">内容3</li>
+                        <li class="li">内容4</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+  </div>
+<!--弹框-->
+<div class="bounced" id="bounced">
+    <div class="pic_house" id="pic_house">
+    <h3 id="h3">中心库管理》图片标签管理》图片库</h3>
+    <p class="add"><span>新增</span></p>
+    <div class="describe"> 描述
+        <input type="text">
+        是否是KV图 <span class="select">
+      <select>
+          <option value="">请选择</option>
+          <option value="">是</option>
+          <option value="">否</option>
+        </select>
+      </span> <span class="retrieve"><a>检索</a></span> </div>
+    <table class="table">
+        <thead>
+        <tr>
+            <th style="width: 10%">序号</th>
+            <th style="width: 15%">图片</th>
+            <th style="width: 20%">名称</th>
+            <th style="width: 15%">描述</th>
+            <th style="width: 20%">是否为KV图</th>
+            <th>图片路径</th>
+          </tr>
+      </thead>
+        <tbody>
+        <tr>
+            <td><input type="radio" name="radio"></td>
+            <td><img src="images/select_pic_01.png" alt=""></td>
+            <td><input type="text" value="图图图图片"/></td>
+            <td><input type="text" value="dsfdsf"/></td>
+            <td>否</td>
+            <td><input type="text" value="safsdfgdsgfd545dfsgdfgdf"/></td>
+          </tr>
+        <tr>
+            <td><input type="radio" name="radio"></td>
+            <td><img src="images/select_pic_02.png" alt=""></td>
+            <td><input type="text" value="safsdfgdsgfd545dfsgdfgdf"/></td>
+            <td><input type="text" value="dfdsffds"/></td>
+            <td>否</td>
+            <td><input type="text" value="safsdfgdsgfd545dfsgdfgdf"/></td>
+          </tr>
+      </tbody>
+      </table>
+    <div class="subm">
+        <ul>
+        <li>提交</li>
+        <li id="cancel">取消</li>
+      </ul>
+      </div>
+  </div>
+    <div class="pic_house" id="pic_house02">
+    <div class="subm subm02">
+        <ul>
+        <li>提交</li>
+        <li id="cancel02">取消</li>
+      </ul>
+      </div>
+  </div>
+  </div>
+<!--<script src="http://www.jq22.com/jquery/1.8.3/jquery.min.js"></script>-->
+<script src="js/jquery.date_input.pack.js"></script>
+</body>
+  </html>
+<script>
+//按键精灵   使用：在需要的input父级加class="focus"
+
+//        <ul  class="clearfix" id="focus">
+//        <li>提示内容</li>
+//        <li>提示内容</li>
+//        <li>提示内容</li>
+//        <li>提示内容</li>
+//        </ul>
+
+var focusArr=["提示内容1","提示内容2","提示内容3","提示内容4","提示内容5"];
+var focustext=[];
+var hei,wid,offsettop,offsetleft,focusHei;
+$(".focus input").each(function(){
+    var i=$(this).index();
+    focustext[i]=$(this).attr("value");
+});
+
+$(".focus input").focus(function(){
+    $("#focus").remove();
+});
+
+$(".focus input").keyup(function(){
+    var i=$(this).index();
+    if($(this).val()==0){
+         hei=$(this).parent(".focus").height();
+         wid=$(this).parent(".focus").width();
+
+        $(this).parent(".focus").append('<ul class="clearfix" id="focus"></ul>');
+        $.each(focusArr, function (index, item) {
+//                    console.log(index)
+            $("#focus").append("<li>"+item+"</li>")
+        });
+        $("#focus").css("top",hei);
+
+        offsettop=$("#focus").offset().top;
+        offsetleft=$("#focus").offset().left;
+
+        focusHei=$("#focus").height();
+
+    }
+    document.onclick=function(event){
+        event=event || window.event;
+        var x=event.pageX;
+        var y=event.pageY;
+//        console.log(x);
+//        console.log(y);
+        if(x-offsetleft>=0 && x-offsetleft<=wid && y-offsettop>=-hei && y-offsettop<=focusHei){
+            return false;
+        }else{
+            $("#focus").remove();
+            hei=null;
+            wid=null;
+            offsettop=null;
+            offsetleft=null;
+            focusHei=null;
+        }
+
+    };
+
+    if($(this).val()=="" || $(this).val()==focustext[i]){
+        console.log(123);
+        $("#focus").remove();
+    }
+
+});
+//按键精灵结束
+
+
+
+
+    //********************************************日历
+    $(function(){
+        $('.date_picker').date_input();
+    });
+
+    //**************************************标题  摘要处效果
+    function sss(id){
+        return document.getElementById(id)
+    }
+    function run(elm,txt){
+        elm.value=txt;
+        elm .onfocus=function(){
+            if(this.value==txt){
+                this.value="";
+            }
+        };
+        elm.onblur=function(){
+            if(this.value==""){
+                this.value=txt;
+            }
+        }
+    }
+    sss("zhaiyao").value = "摘要（摘要不能为空，且不能超过200字）";
+    run(sss("title"),"此处输入标题");
+    run(sss("zhaiyao"),"摘要（摘要不能为空，且不能超过200字）");
+
+
+    $(function(){
+        //********************************************点击展开
+
+        var flag=1;
+
+        $("#show").click(function(){
+            ifshow();
+        });
+
+        $("#attr").click(function(){
+            ifshow();
+        });
+
+        function ifshow() {
+            if (flag == 1) {
+
+//                $("#body").height(1236);
+//                $("#body").scrollTop(1236)
+//               console.log($("#body").height())
+
+                $("#hide").slideDown();
+
+                $(".ke-edit").animate({height: "60px"}, 1000, "linear");
+                $(".ke-edit-iframe").animate({height: "60px"}, 1000, "linear");
+
+
+                $("#attribute").css("background", "url('./images/zhankai.png') no-repeat left center");
+                $("#attr").css("background", "url('./images/zhankai.png') no-repeat left center");
+                $("#attribute").html("展开正文");
+                $("#attr").html("展开正文");
+
+                flag = 2;
+            }
+            else if (flag == 2) {
+                $("#hide").hide();
+                $(".ke-edit").animate({height: "361px"}, 1000, "linear");
+                $(".ke-edit-iframe").animate({height: "361px"}, 1000, "linear");
+
+
+                $("#attribute").css("background", "url('./images/shouqi.png') no-repeat left center");
+                $("#attr").css("background", "url('./images/shouqi.png') no-repeat left center");
+                $("#attribute").html("收起正文");
+                $("#attr").html("收起正文");
+
+//                $("#body").height(921);
+//                $("#body").scrollTop(921);
+
+                flag = 1;
+            }
+        }
+        //********判断选择的是否超出
+        function ifbeyond(tag){
+            $(tag).each(function(){
+                var $this=$(this);
+                var spanWid=$this.find(".click").width()+12; //span的宽度
+                var tagWid=$this.width()+2;  //tags的宽度
+                var wid=50;  //50为省略号的宽度
+//                console.log(tagWid);
+//                console.log(spanWid);
+                $this.find("a").each(function(){
+                    wid+=parseInt($(this).width()+30);  //a标签的宽度
+//                    console.log(wid);
+//                    console.log(tagWid-spanWid);
+                    if(wid>=tagWid-spanWid){
+//                        console.log($this.find("a").length);
+                        //删除
+                        var len=$this.find("a").length;
+                        var index=$(this).index();
+                        for(var i=len-1;i>=index-1;i--){
+                            $this.find("a").eq(i).remove();
+                        }
+                        $this.find(".click").before("<i class='ellipsis'>......</i>");
+                        return false;
+                    }
+                })
+            })
+        }
+        ifbeyond(".classify02");
+      //**************************************************多媒体部分 点击有没有值
+
+        $(".file").change(function(){
+            if($(this).val()){
+                var ss=$(this).val();
+                var aa=ss.lastIndexOf("\\");
+                $(this).parent().find(".filename").parents("span").css("display","block");
+                $(this).parent().find(".filename").parents("li").addClass("list");
+                $(this).parent().find(".filename").val(ss.substr(aa+1));
+            }
+        });
+//************************************************************************
+    function hasVal(){  //多媒体部分 初始化时判断有没有值
+        $(".filename").each(function(){
+            if($(this).val()){   //如果有值
+                $(this).parents("span").css("display","block");
+                $(this).parents("li").addClass("list");
+
+            }else{//如果没有值
+                $(this).parents("li").removeClass("list");
+                $(this).parents("span").css("display","none");
+
+            }
+        })
+
+    }
+        hasVal();
+//************************************************************************
+    });
+
+    // ****************************************弹框
+    function sss(id){
+        return document.getElementById(id)
+    }
+
+$(function(){
+    $("#pic").click(function(){
+        $("#bounced").show();
+        $("#pic_house").show();
+        $("#pic_house02").hide();
+        drag(sss("pic_house"),sss("h3"));  //移动
+        center(sss("pic_house"));   //居中
+        window.onresize=function(){
+            center(sss("pic_house"));   //居中
+        };
+    });
+    $("#cancel").click(function(){
+        $("#bounced").hide();
+    });
+
+    //******************************************
+    function  screenWid(pic_house){
+        var wid=document.documentElement.clientWidth;
+//        console.log(wid);
+        if(wid<=1088){
+            $(pic_house).css("width",wid);
+        }else{
+            $(pic_house).css("width",1088);
+        }
+
+    }
+    screenWid("#pic_house");
+    screenWid("#pic_house02");
+    window.onresize=function(){
+        screenWid("#pic_house");
+        screenWid("#pic_house02");
+    };
+
+
+    //点击选择弹窗
+    $(".tags").click(function(ev){
+        ev=ev||evevt;
+        var oElm=ev.target||ev.srcElement;
+        if(oElm.tagName!="I" ){
+            $("#bounced").show();
+            $("#pic_house").hide();
+            $("#pic_house02").show();
+            center(sss("pic_house02"));   //居中
+            window.onresize=function(){
+                center(sss("pic_house02"));   //居中
+            };
+        }
+    });
+
+    $("#cancel02").click(function(){
+        $("#bounced").hide();
+    });
+    //点击选择弹窗关闭按钮
+    $("#select-box span").click(function(){
+        $("#bounced").hide();
+    });
+
+
+});
+
+//************************************************点击预览
+    $("#preview_btn").click(function(){
+        $(".tip").show(function(){
+            document.onclick=function(ev){
+                ev=ev||evevt;
+                var oElm=ev.target||ev.srcElement;
+                if(oElm.className!="li"){
+                    $(".tip").hide();
+                }
+            };
+        });
+    });
+    $(".tip li").each(function(){
+        $(this).click(function(){
+            $("#preview").show();
+            $(".button").hide();
+        })
+    });
+    $("#close-btn").click(function(){
+        $("#preview").hide();
+        $(".button").show();
+    });
+
+//***********************************************点击媒体出处后边加号  关键词
+
+    function addguanjianci(){    //添加关键词
+        var totalwid= $("#media").width()-152-20-152-20;//能插入的a的总宽度
+
+        if($("#guanjianci").val()&&$("#guanjianci").val()!="关键词"){
+            var val=$("#guanjianci").val();
+            $("#after").after("<a class='aa'>"+val+"<i class='close'>×</i></a>");
+            $("#guanjianci").val("关键词");
+            $(".close").click(function(){
+                $(this).parents("a").remove();
+            });
+
+            var wid=50;  //50为省略号的宽度
+            $("#media").find(".aa").each(function(){
+//                console.log(tagWid);
+//                console.log(spanWid);
+                wid+=parseInt($(this).width()+16);  //a标签的宽度
+//                    console.log(wid);
+//                    console.log(tagWid-spanWid);
+                if(wid>=totalwid){
+                    //删除
+                    var index=$("#media").find(".aa").length-1;
+                    $("#media").find(".aa").eq(index-1).remove();
+                    $(".ellipsis02").show();
+                    return false;
+                }
+
+            });
+        }
+    }
+
+    $(function(){
+        $("#guanjianci").keyup(function(){   //回车
+            document.onkeyup=function(ev){
+                ev=ev || window.event;
+                if(ev.keyCode==13){
+                    addguanjianci();  //添加关键词
+                }
+            };
+        });
+
+        $("#add").click(function(){   //点击
+            addguanjianci();  //添加关键词
+        });
+    });
+
+//*************************************************输入指数名称那边改 20170703
+$(function(){
+    $(".input02").hide();
+    $(".input03").hide();
+    $(".input01 input").keyup(function(){
+
+        document.onkeyup=function(ev){
+            ev=ev || window.event;
+            if(ev.keyCode==13){
+                return false;
+            }
+        };
+
+        if($(".input01 input").val()!="请输入指数名称" && $(".input01 input").val()!=""){
+            $(".input02").show();
+        }
+    });
+
+    $(".input02 input").keyup(function(){
+
+        document.onkeyup=function(ev){
+            ev=ev || window.event;
+            if(ev.keyCode==13){
+                return false;
+            }
+        };
+
+        if($(".input02 input").val()!="行情指数" && $(".input02 input").val()!=""){
+            $(".input03").show();
+
+        }
+    });
+
+    $(".input03 input").keyup(function(){
+        if($(".input03 input").val()=="涨跌幅" || $(".input03 input").val()==""){
+            return false;
+        }
+        document.onkeyup=function(ev){
+            ev=ev || window.event;
+            if( $(".input03").is(':hidden')){
+                return false;
+            }else{
+                if(ev.keyCode==13){
+
+                    $("#zhishu").append("<li> "+$(".input01 input").val()+" ,"+$(".input02 input").val()+" , "+$(".input03 input").val()+" <i class='close'>×</i> </li>")
+                    $(".input01 input").val("请输入指数名称");
+                    $(".input02 input").val("行情指数");
+                    $(".input03 input").val("涨跌幅");
+                    $(".input02").hide();
+                    $(".input03").hide();
+
+                }
+                if($("#zhishu").find("li")){
+                    $("#zhishu").find(".close").click(function(){
+//                        console.log(123)
+                        $(this).parents("li").remove();
+                    })
+                }
+            }
+
+        };
+
+
+    });
+
+
+});
+
+////*************************************************输入指数名称那边原
+//    $(function(){
+//        $(".input02").hide();
+//        $(".input03").hide();
+//        $(".input01 input").keyup(function(){
+//
+//            document.onkeyup=function(ev){
+//                ev=ev || window.event;
+//                if(ev.keyCode==13){
+//                    return false;
+//                }
+//            };
+//
+//            if($(".input01 input").val()!="请输入指数名称" && $(".input01 input").val()!=""){
+//                $(".input02").show();
+//                $(".input02 input").keyup(function(){
+//
+//                    document.onkeyup=function(ev){
+//                        ev=ev || window.event;
+//                        if(ev.keyCode==13){
+//                            return false;
+//                        }
+//                    };
+//
+//                    if($(".input02 input").val()!="行情指数" && $(".input02 input").val()!=""){
+//                        $(".input03").show();
+//                        $(".input03 input").keyup(function(){
+//                            if($(".input03 input").val()!="涨跌幅" && $(".input03 input").val()!=""){
+////                            <li> 沪深300[000300] ,3492.88 , +0.70% <i class="close">×</i> </li>
+//                                document.onkeyup=function(ev){
+//                                    ev=ev || window.event;
+//                                    if(ev.keyCode==13){
+//
+//                                        $("#zhishu").append("<li> "+$(".input01 input").val()+" ,"+$(".input02 input").val()+" , "+$(".input03 input").val()+" <i class='close'>×</i> </li>")
+//                                        $(".input01 input").val("请输入指数名称");
+//                                        $(".input02 input").val("行情指数");
+//                                        $(".input03 input").val("涨跌幅");
+//                                        $(".input02").hide();
+//                                        $(".input03").hide();
+//
+//                                        if($("#zhishu").find("li")){
+//                                            $("#zhishu").find(".close").click(function(){
+////                                                console.log(123)
+//                                                $(this).parents("li").remove();
+//                                            })
+//                                        }
+//
+//                                    }
+//                                };
+//                            }
+//                            else{
+//                                return false;
+//                            }
+//                        })
+//                    }else{
+//                        $(".input03").hide();
+//                    }
+//                })
+//            }else{
+//                $(".input02").hide();
+//            }
+//        });
+//
+//
+//
+//    });
+//******************************************************************请输入证券名称那边
+//    <div class="name01 name02 resultlist01"> 浦发银行（600000） <i class="arrow"><img src="images/icon_05%20.png" alt=""/></i> <span></span></div>
+
+    //**************************************************************
+    var inputVal00= $(".name").eq(0).find("input").attr("value");
+    var inputVal01= $(".name").eq(1).find("input").attr("value");
+    var inputVal02= $(".name").eq(2).find("input").attr("value");
+
+    var text=null;
+    var i=null;
+    var x=null;
+    var m=null;
+//    var n=null;
+    var y=null;
+    var k=null;
+    var b=1;
+
+//    console.log(inputVal00);
+
+    $(".name").each(function(){
+        var $this=$(this);
+
+        $this.find("input").focus(function(){
+            $(".resultlist").hide();
+            $(".resultlist").html("");
+        });
+
+
+        $this.find("input").keyup(function() {
+            //                console.log( $this.index()-3);
+            var suoyin = $this.index() - 3;
+            if (suoyin == 0) {
+                text = inputVal00;
+                zhquan("0");
+            } else if (suoyin == 1) {
+                text = inputVal01;
+                zhquan("1");
+            } else if (suoyin == 2) {
+                text = inputVal02;
+                zhquan("2");
+            }
+
+
+            function zhquan(text02){
+
+//                document.onclick=function(ev) {
+//                    ev = ev || evevt;
+//                    var oElm = ev.target || ev.srcElement;
+//                    if (oElm.className!="resultlist") {
+//                        console.log(123);
+//                        $this.find(".resultlist").hide();
+//                        $this.find("input").val(text);
+//                        $this.find(".resultlist").html("");
+//
+//                    }
+//                };
+
+
+            if ($this.find(".resultlist").css("display", "none")) {
+                $this.find(".resultlist").html("");
+
+            if ($this.find("input").val() == text02) {
+
+                //模拟数据
+                var obj=["浦发浦发浦发浦发浦发浦发（600000)","中信浦发浦发浦发浦发中信（012345)","工商银行（211545)","招商银行（789545)"];
+
+                //遍历数组   插入到resultlist
+                $.each(obj, function (index, item) {
+//                    console.log(index) style="overflow: hidden;text-overflow: ellipsis;white-space: nowrap;width: 132px;font-weight: normal;display: inline-block;"
+                    $this.find(".resultlist").append('<div class="name01 name02 resultlist01"><a class="aaclick" style="overflow: hidden;text-overflow: ellipsis;white-space: nowrap;width: 132px;font-weight: normal;display: inline-block;"> ' + item + '</a> <i class="arrow"></i><i class="arrow arrow02"></i><i class="arrow arrow03"></i> <span></span><span></span><span></span></div> ');
+                });
+
+
+                $this.find(".resultlist").show();  //提示框出现
+
+
+                $this.find(".resultlist01").mouseover(function () {  //鼠标经过提示框中的某一个
+
+
+//                    console.log($(this).index())
+                    i = $(this).index();
+                    var $thisresultlist = $(this);
+
+                    $thisresultlist.find(".arrow").click(function () {  //点击箭头的时候效果
+                        x = $(this).index();
+//                        console.log(x)
+                        $(".arrow").css("background-position-y", "0");
+                        $(this).css("background-position-y", "-13px");
+                        enter();
+                    });
+
+//                    $thisresultlist.find(".arrow").hover(function(){   //经过箭头的时候效果
+//                        $(this).css("background-position-y","-13px");
+//                    },function(){
+//                        $(this).css("background-position-y","0");
+//                    });
+
+
+                    $thisresultlist.find("span").mouseover(function () {  //经过星星的时候效果
+
+                        $(this).css("background-position-y", "-15px").prevAll("span").css("background-position-y", "0");
+                        $(this).css("background-position-y", "-15px").nextAll("span").css("background-position-y", "-15px");
+                    });
+
+                    $thisresultlist.find("span").mouseout(function () {//移开星星的时候效果
+
+                        if ($thisresultlist.hasClass("aa")) {   //这里有被点击的星星
+//                            console.log(456)
+                            for (var w = $thisresultlist.find("span").length - 1; w >= 0; w--) {
+                                if (w >= m) {
+                                    $thisresultlist.find("span").eq(m).css("background-position-y", "-15px");
+                                    $thisresultlist.find("span").eq(m).nextAll("span").css("background-position-y", "-15px");
+
+                                } else {
+                                    $thisresultlist.find("span").eq(m).prevAll("span").css("background-position-y", "0");
+                                }
+                            }
+                        } else {
+                            $thisresultlist.find("span").css("background-position-y", "0");
+                        }
+
+                    });
+
+
+                    $thisresultlist.find("span").click(function () {   //点击星星的时候效果
+                        m = $(this).index() - 4;
+
+                        $(".resultlist01").removeClass("aa");
+                        $thisresultlist.addClass("aa");
+//                        console.log(m)
+                        enter();
+                    });
+
+                    $thisresultlist.find(".aaclick").click(function(){
+                        if($this.find("input").val()==text){
+                            return false;
+                        }
+
+                        if (m == 0) {  //几颗星星3
+                            k = 1;
+                            y = 1;
+                            b = 1;
+                        } else if (m == 1) {   //2
+                            k = 1;
+                            y = 0;
+                            b = 1;
+                        } else if (m == 2) {  //1
+                            k = 0;
+                            y = 0;
+                            b = 1;
+                        } else if (m == null) {  //1
+                            b = 0;
+                            k = 0;
+                            y = 0;
+                        }
+
+                        $this.find(".item").append('<div class="name01 name02"> ' + obj[i] + ' <i class="arrowss" style="background-position:' + (-(x-1) * 12) + 'px -14px"></i><span style="background-position-y:' + (-y * 15) + 'px"></span><span style="background-position-y:' + (-k * 15) + 'px"></span> <span style="background-position-y:' + (-b * 15) + 'px"></span> <i class="close">×</i> </div>');
+
+                        $this.find(".resultlist").hide();
+                        $this.find(".resultlist").html("");
+                        m = null;
+                        x=null;
+                        $this.find("input").val(text);
+                        $(".close").click(function () {
+                            $(this).parents(".name02").remove();
+                        })
+                    });
+
+
+                    function enter() {
+                        document.onkeyup = function (ev) {   //回车
+                            ev = ev || window.event;
+
+                            if($this.find("input").val()==text){
+                                return false;
+                            }
+
+                                if (ev.keyCode == 13) {
+//                                console.log(m)
+                                    if (m == 0) {  //几颗星星3
+                                        k = 1;
+                                        y = 1;
+                                        b = 1;
+                                    } else if (m == 1) {   //2
+                                        k = 1;
+                                        y = 0;
+                                        b = 1;
+                                    } else if (m == 2) {  //1
+                                        k = 0;
+                                        y = 0;
+                                        b = 1;
+                                    } else if (m == null) {  //1
+                                        b = 0;
+                                        k = 0;
+                                        y = 0;
+                                    }
+
+                                    $this.find(".item").append('<div class="name01 name02"> ' + obj[i] + ' <i class="arrowss" style="background-position:' + (-(x-1) * 12) + 'px -14px"></i><span style="background-position-y:' + (-y * 15) + 'px"></span><span style="background-position-y:' + (-k * 15) + 'px"></span> <span style="background-position-y:' + (-b * 15) + 'px"></span> <i class="close">×</i> </div>');
+
+                                    $this.find(".resultlist").hide();
+                                    $this.find(".resultlist").html("");
+                                    m = null;
+                                    x=null;
+                                    $this.find("input").val(text);
+                                    $(".close").click(function () {
+                                        $(this).parents(".name02").remove();
+                                    })
+
+                                }
+
+
+                        };
+                    }
+                });
+
+            }
+        }
+            }
+        })
+
+    });
+
+    $(".name01 input").keyup(function(){
+        if($(this).val()==""){
+//            console.log("kong")
+            $(".resultlist").hide();
+            $(this).parents(".name01").find(".resultlist").html("");
+        }
+    })
+
+
+</script>
